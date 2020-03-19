@@ -10,12 +10,12 @@ Placeholder Email: rahul.soshte47@gmail.com
 Password: 123456
 
 # How to create Bramble Oauth JAR plugin
-1. Open Android Studio. Create a Empty Project.
+1. Open Android Studio
 
-2. Create New Empty Project
+2. Create New Empty Project. Create New Module. Select Android Library.
 ![Android Library Module](images/1401.png)
 
-3. Create New Module. Select Android Library. Ensure package name is com.dan.chunkbreaker and Library Name as Chunkbreaker
+3. Ensure package name is com.dan.chunkbreaker and Library Name as Chunkbreaker
 ![Android Library Module](images/1402.png)
 
 4. Now copy this file 
@@ -136,3 +136,9 @@ Then click on Chunkbreaker -> createFullJarRelease
 Then copy the Chunkbreaker/build/full_jar/release/createFullJarRelease/full.jar in Unity's Android/Plugins/
 
 Android Studio is also sometimes quite buggy. Delete any previous files present in this folder Chunkbreaker/build/full_jar/release/ before starting the 7 step or do a Complete Clean Project and redo the 7 step.
+
+
+References:
+http://technicalartistry.blogspot.com/2016/01/fitbit-unity-oauth-2-and-native.html
+https://www.youtube.com/watch?v=v5s7BMPtK9E
+http://oferei.com/2013/06/serverless-instagram-authentication/
