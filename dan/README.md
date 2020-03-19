@@ -10,7 +10,7 @@ Placeholder Email: rahul.soshte47@gmail.com
 Password: 123456
 
 # How to create Bramble Oauth JAR plugin
-1. Open Android Studio
+1. Open Android Studio. Create a Empty Project.
 
 2. Create New Empty Project
 ![Android Library Module](images/1401.png)
@@ -76,7 +76,7 @@ afterEvaluate {
 }
 ```
 
-Just ensure to add this line at the end of gradle file
+Just ensure to add this line is present at the end of gradle file
 ```
 afterEvaluate {
     generateReleaseBuildConfig.enabled = false
@@ -84,7 +84,7 @@ afterEvaluate {
 ```
 
 
-7. After that click on Gradle at the right hand side of Android Studio. Add image here.
+7. After that click on Gradle at the right hand side of Android Studio.
 ![Android Library Module](images/1403.png)
 Then click on Chunkbreaker -> createFullJarRelease
 Then copy the Chunkbreaker/build/full_jar/release/createFullJarRelease/full.jar in Unity's Android/Plugins/
