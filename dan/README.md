@@ -139,6 +139,7 @@ Android Studio is also sometimes quite buggy. Delete any previous files present 
 
 
 References:
+
 http://technicalartistry.blogspot.com/2016/01/fitbit-unity-oauth-2-and-native.html
 
 https://www.youtube.com/watch?v=v5s7BMPtK9E
