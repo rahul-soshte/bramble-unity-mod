@@ -86,5 +86,12 @@ afterEvaluate {
 
 7. After that click on Gradle at the right hand side of Android Studio.
 ![Android Library Module](images/1403.png)
+
+
 Then click on Chunkbreaker -> createFullJarRelease
+
 Then copy the Chunkbreaker/build/full_jar/release/createFullJarRelease/full.jar in Unity's Android/Plugins/
+
+Android Studio is also sometimes quite buggy. Delete any previous files present in this folder Chunkbreaker/build/full_jar/
+
+release/ before starting the 7 step or do a Complete Clean Project and redo the 7 step.
