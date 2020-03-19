@@ -29,7 +29,50 @@ Chunkbreaker/libs/
 
 5. Open Files -> Project Structure -> Dependencies. Click on Chunkbreaker. Add JAR Dependency libs/classes.jar
 
-6. Your Chunkbreaker/build.gradle file will look something like this 
+6. Create a MainActivity.java file in Chunkbreaker/src/main/java/com.dan.chunkbreaker/
+
+```
+package com.dan.chunkbreaker;
+
+import com.unity3d.player.UnityPlayer;
+import com.unity3d.player.UnityPlayerActivity;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
+import android.util.Log;
+
+public class MainActivity extends UnityPlayerActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        Intent gameIntent = new Intent(this,com.unity3d.player.UnityPlayerActivity.class);
+//        setContentView(R.layout.activity_main);
+
+        if(UnityPlayer.currentActivity == null){
+            startActivity(gameIntent);
+        }
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent)
+    {
+        super.onNewIntent(intent);
+        handleAccessToken(intent);
+    }
+
+    private void handleAccessToken(Intent intent){
+        Uri uri = intent.getData();
+        if(uri != null && uri.toString().startsWith("chunkbreaker")){
+            Log.d("Unity", "About to message unity with return code:"+uri.toString());
+            UnityPlayer.UnitySendMessage("CustomAndroidPlugin","PassReturnCode",uri.toString());
+        }
+    }
+}
+```
+
+7. Your Chunkbreaker/build.gradle file will look something like this 
 ```
 apply plugin: 'com.android.library'
 
@@ -84,7 +127,7 @@ afterEvaluate {
 ```
 
 
-7. After that click on Gradle at the right hand side of Android Studio.
+8. After that click on Gradle at the right hand side of Android Studio.
 ![Android Library Module](images/1403.png)
 
 
