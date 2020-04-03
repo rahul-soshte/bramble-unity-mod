@@ -171,7 +171,7 @@ Request which will send Achievements data of the user to Bramble API. So if a us
 
    **Required:**
 
-      `achivement_id=[hexadecimal]` 
+      `achievement_id=[hexadecimal]` 
 
 * **Header Params**
   
