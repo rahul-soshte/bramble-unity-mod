@@ -138,6 +138,7 @@ Then click on Chunkbreaker -> createFullJarRelease
 ![Android Library Module](images/1406.png)
 
 In 'other' dropdown you will find this
+
 ![Android Library Module](images/1407.png)
 
 Then copy the Chunkbreaker/build/full_jar/release/createFullJarRelease/full.jar in Unity's Android/Plugins/
@@ -156,7 +157,7 @@ http://oferei.com/2013/06/serverless-instagram-authentication/
 
 **Simple Achievement Data POST Request**
 ----
-    Request which will send Achievements data of the user to Bramble API. So if a user has completed a particular the game can send data to Bramble API with this request.
+Request which will send Achievements data of the user to Bramble API. So if a user has completed a particular the game can send data to Bramble API with this request.
 
 * **URL**
 
