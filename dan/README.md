@@ -194,8 +194,8 @@ Request which will send Achievements data of the user to Bramble API. So if a us
 
   ```csharp
         var achievementURL = "http://3.19.60.28:3000/achievement/5e871be30b3d43640a15e01b";
-        UnityWebRequest uwr = UnityWebRequest.Post(authURL,"POST");
-        uwr.SetRequestHeader("Authorization", "Basic Y2h1bmticmVha2VyOmNodW5rYnJlYWtlcnNlY3JldA==");
+        UnityWebRequest uwr = UnityWebRequest.Post(achievementURL,"POST");
+        uwr.SetRequestHeader("Authorization", "Bearer e1e682d1dd7378cbfa4fa4d7b2d0efceb27df47b");
         yield return uwr.Send();
         var N = JSON.Parse(uwr.downloadHandler.text);
 
