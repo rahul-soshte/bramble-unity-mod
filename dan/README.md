@@ -10,26 +10,28 @@ Placeholder Email: rahul.soshte47@gmail.com
 Password: 123456
 
 # How to create Bramble Oauth JAR plugin
-1. Open Android Studio
+**1.** Open Android Studio
 
-2. Create New Empty Project. Create New Module. Select Android Library.
+**2.** Create New Empty Project. Create New Module. Select Android Library.
 ![Android Library Module](images/1401.png)
 
-3. Ensure package name is com.dan.chunkbreaker and Library Name as Chunkbreaker
+**3.** Ensure package name is com.dan.chunkbreaker and Library Name as Chunkbreaker. Ensure Language is Java.
 ![Android Library Module](images/1402.png)
 
-4. Now copy this file 
+**4.** Now copy the file classes.jar at this Address Path in your Unity Editor
 ```
-C:\Program Files\Unity\Hub\Editor\2018.4.18f1\Editor\Data\PlaybackEngines\AndroidPlayer\Variations\mono\Release\Classes\classes.jar
+C:\Program Files\Unity\Hub\Editor\2018.4.18f1\Editor\Data\PlaybackEngines\AndroidPlayer\Variations\mono\Release\Classes\
 ```
 into Android Studio 
 ```
 Chunkbreaker/libs/
 ```
 
-5. Open Files -> Project Structure -> Dependencies. Click on Chunkbreaker. Add JAR Dependency libs/classes.jar
+**5.** Open Files -> Project Structure -> Dependencies. Click on Chunkbreaker. Add JAR Dependency libs/classes.jar
+![Add Dependency](images/1404.png)
 
-6. Create a MainActivity.java file in Chunkbreaker/src/main/java/com.dan.chunkbreaker/
+
+**6.** Create a MainActivity.java file in Chunkbreaker/src/main/java/com.dan.chunkbreaker/
 
 ```
 package com.dan.chunkbreaker;
@@ -72,7 +74,7 @@ public class MainActivity extends UnityPlayerActivity {
 }
 ```
 
-7. Your Chunkbreaker/build.gradle file will look something like this 
+**7.** Your Chunkbreaker/build.gradle file will look something like this 
 ```
 apply plugin: 'com.android.library'
 
@@ -127,16 +129,20 @@ afterEvaluate {
 ```
 
 
-8. After that click on Gradle at the right hand side of Android Studio.
-![Android Library Module](images/1403.png)
+**8.** After that click on Gradle at the right hand side of Android Studio.
 
+![Android Library Module](images/1405.png)
 
 Then click on Chunkbreaker -> createFullJarRelease
+
+![Android Library Module](images/1406.png)
+
+In 'other' dropdown you will find this
+![Android Library Module](images/1407.png)
 
 Then copy the Chunkbreaker/build/full_jar/release/createFullJarRelease/full.jar in Unity's Android/Plugins/
 
 Android Studio is also sometimes quite buggy. Delete any previous files present in this folder Chunkbreaker/build/full_jar/release/ before starting the 7 step or do a Complete Clean Project and redo the 7 step.
-
 
 References:
 
@@ -145,3 +151,57 @@ http://technicalartistry.blogspot.com/2016/01/fitbit-unity-oauth-2-and-native.ht
 https://www.youtube.com/watch?v=v5s7BMPtK9E
 
 http://oferei.com/2013/06/serverless-instagram-authentication/
+
+# How to send Achievement Data to Bramble API
+
+**Simple Achievement Data POST Request**
+----
+    Request which will send Achievements data of the user to Bramble API. So if a user has completed a particular the game can send data to Bramble API with this request.
+
+* **URL**
+
+    /achievement/:achievement_id
+
+* **Method:**
+
+  `POST`
+  
+*  **URL Params**
+
+   **Required:**
+
+      `achivement_id=[hexadecimal]` 
+
+* **Header Params**
+  
+  **Required:**
+
+      `
+      Authorization='Bearer ' + access_token_2(Received in authorization_grant Request in CustomAndroidPlugin.cs)
+      `
+
+* **Data Params**
+
+  None
+
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:** `Added Achievement Successfully`
+
+* **Sample Call:**
+
+  ```csharp
+        var achievementURL = "http://3.19.60.28:3000/achievement/5e871be30b3d43640a15e01b";
+        UnityWebRequest uwr = UnityWebRequest.Post(authURL,"POST");
+        uwr.SetRequestHeader("Authorization", "Basic Y2h1bmticmVha2VyOmNodW5rYnJlYWtlcnNlY3JldA==");
+        yield return uwr.Send();
+        var N = JSON.Parse(uwr.downloadHandler.text);
+
+        if (N ["code"].Value == "400" || N ["code"].Value == "503" || N ["code"].Value == "500") {
+            txt.text = "Error!"+ code;
+            Debug.Log("Error!" + code);
+        } else {
+            Debug.Log(N);
+        }
+  ```
